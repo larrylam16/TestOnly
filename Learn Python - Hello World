@@ -1,6 +1,6 @@
 print("hello world")
 
-def defining_function:
+def defining_function():
   print("this is to test defining a function and calling it in python")
   
 defining_function()
