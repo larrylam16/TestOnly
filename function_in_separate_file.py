@@ -11,11 +11,28 @@ def Add_file_to_be_called():
 
   
 def Login():
-  credentials = open(r'C:\GitHub\login\credential.csv')
-  csv_credentials = csv.reader(credentials)
 
-  for LoginCredential in csv_credentials:
-		print(LoginCredential[0] + ' , ' + LoginCredential[1] + ' , ' + LoginCredential[2])
+  #update login function
+  try:
+        csv_credentials = csv.reader(credential_file_positive)
+        for LoginCredential in csv_credentials:
+
+            logging.info(LoginCredential[0])
+            try:
+                loginUser = driver.find_element_by_xpath('//input[@id="UserName"]')
+            except:
+                logging.info(sys.exc_info()[0])
+
+            logging.info(loginUser)
+            loginUser.send_keys(LoginCredential[0])
+
+            logging.info(LoginCredential[1])
+            loginPass = driver.find_element_by_xpath('//input[@id="Password"]')
+            loginPass.send_keys(LoginCredential[1])
+            
+            
+            loginButtonClick = driver.find_element_by_xpath('//*[@id="LogonButton"]/table/tbody/tr/td/input')
+            loginButtonClick.click()
 
   
-  credentials.close()
+        credentials.close()
