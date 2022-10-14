@@ -5,16 +5,13 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import time
 import csv
-import logging
-
-#Load driver for Chrome
-driver = webdriver.Chrome(executable_path = os.path.abspath('test_suites/resources/webdriver/chromedriver.exe'))
 
 def Add_file_to_be_called():
   print(time.strftime("%H:%M:%S") + " this is a fuction from a seperate file")
 
   
 def Login():
+
   #update login function
   try:
         csv_credentials = csv.reader(credential_file_positive)
@@ -37,9 +34,5 @@ def Login():
             loginButtonClick = driver.find_element_by_xpath('//*[@id="LogonButton"]/table/tbody/tr/td/input')
             loginButtonClick.click()
 
-        credential_file_positive.close()
-        logging.info('Credentials inputted')
-  except:
-        logError(loginPositive)
-
   
+        credentials.close()
