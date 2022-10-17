@@ -36,3 +36,5 @@ def Login():
 
   
         credentials.close()
+  except:
+        logging.info('Failed to load login details')
