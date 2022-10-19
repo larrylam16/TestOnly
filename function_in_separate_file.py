@@ -5,6 +5,13 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import time
 import csv
+import sys
+
+
+startUrl = sys.argv[1]
+MonitoringStatus = sys.argv[2]
+Environ = sys.argv[3]
+
 
 def Add_file_to_be_called():
   print(time.strftime("%H:%M:%S") + " this is a fuction from a seperate file")
