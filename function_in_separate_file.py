@@ -7,6 +7,18 @@ import time
 import csv
 import sys
 
+TimeTaken = "0"
+
+timestamp = time.strftime("%Y%m%dT%H%M%S")
+fmt = "%Y-%m-%dT%H:%M:%S.%f%z"
+datefmt = "%d/%m/%Y"
+filetimestampfmt = "%Y%m%dT%H%M%S"
+now_utc = datetime.now(timezone('UTC'))
+now_pacific = now_utc.astimezone(timezone('US/Pacific'))
+now_AEST = now_pacific.astimezone(timezone('Australia/Melbourne'))
+time_AEST = now_AEST.strftime(fmt)
+filetime_AEST = now_AEST.strftime(filetimestampfmt)
+
 
 startUrl = sys.argv[1]
 MonitoringStatus = sys.argv[2]
@@ -45,3 +57,6 @@ def Login():
         credentials.close()
   except:
         logging.info('Failed to load login details')
+
+
+
