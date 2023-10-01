@@ -20,6 +20,30 @@ time_AEST = now_AEST.strftime(fmt)
 filetime_AEST = now_AEST.strftime(filetimestampfmt)
 
 
+
+'''
+Configuration & Prepwork for modules
+'''
+# Logging
+# Check if log, and screenshots folder is present. If not, make them.
+if not os.path.exists('log'):
+    os.mkdir('log')
+if not os.path.exists('SumoLogs'):
+    os.mkdir('SumoLogs')    
+#if not os.path.exists('log/screenshots'):
+#    os.mkdir('log/screenshots')
+# Logging Configuration
+logging.basicConfig(
+                        filename=os.path.abspath('log/DJ_RESULTS-' + filetime_AEST +'.log'),
+                        level=logging.INFO,
+                        format='%(levelname)s - %(asctime)s - %(message)s',
+                        filemode='a',
+                        datefmt='%d-%b-%y %H:%M:%S',
+                    )
+
+
+
+
 startUrl = sys.argv[1]
 MonitoringStatus = sys.argv[2]
 Environ = sys.argv[3]
