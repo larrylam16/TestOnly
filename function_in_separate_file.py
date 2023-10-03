@@ -51,9 +51,29 @@ options.add_experimental_option("excludeSwitches", ["enable-logging"])
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
+# Load driver for Firefox
+# driver = webdriver.Firefox(executable_path= os.path.abspath('../intouch-davidjones-webforms-testing/resources/webdriver/geckodriver.exe'))
+
+# Load driver for IE
+# driver = webdriver.Ie(executable_path = os.path.abspath('../intouch-davidjones-webforms-testing/resources/webdriver/IEDriverServer.exe'))
+
+# Load driver for Edge
+# driver = webdriver.Edge(executable_path = os.path.abspath('../intouch-davidjones-webforms-testing/resources/webdriver/MicrosoftWebDriver.exe'))
+
+# We can probably have all the drivers loaded as seperate items in an array, and replicate the tests concurrently for each driver
+# by using the concurrent.futures library. This would mean we can have all of the browsers tested at once
+
 startUrl = sys.argv[1]
 MonitoringStatus = sys.argv[2]
 Environ = sys.argv[3]
+
+
+if MonitoringStatus == 'UnitTesting':
+    SumoURL = str('NotApplicable')
+else:
+    SumoURL = sys.argv[5]
+
+
 
 
 def Add_file_to_be_called():
