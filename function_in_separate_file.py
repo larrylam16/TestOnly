@@ -42,6 +42,13 @@ logging.basicConfig(
                     )
 
 
+startTime = time.time()
+# Load driver for Chrome
+#driver = webdriver.Chrome(executable_path = os.path.abspath('test_suites/resources/webdriver/chromedriver.exe'))
+options = webdriver.ChromeOptions()
+options.add_argument("--incognito")
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
 startUrl = sys.argv[1]
